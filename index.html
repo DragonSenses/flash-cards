@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Flash Cards</title>
+</head>
+<body>
+  <button id="clear" class="clear btn">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+      <path fill-rule="evenodd" d="M8.75 1A2.75 2.75 0 006 3.75v.443c-.795.077-1.584.176-2.365.298a.75.75 0 10.23 1.482l.149-.022.841 10.518A2.75 2.75 0 007.596 19h4.807a2.75 2.75 0 002.742-2.53l.841-10.52.149.023a.75.75 0 00.23-1.482A41.03 41.03 0 0014 4.193V3.75A2.75 2.75 0 0011.25 1h-2.5zM10 4c.84 0 1.673.025 2.5.075V3.75c0-.69-.56-1.25-1.25-1.25h-2.5c-.69 0-1.25.56-1.25 1.25v.325C8.327 4.025 9.16 4 10 4zM8.58 7.72a.75.75 0 00-1.5.06l.3 7.5a.75.75 0 101.5-.06l-.3-7.5zm4.34.06a.75.75 0 10-1.5-.06l-.3 7.5a.75.75 0 101.5.06l.3-7.5z" clip-rule="evenodd" />
+    </svg>
+  </button>
+
+  <h1>Flash Cards
+    <!-- Adds new card  by "showing" the add container/overlay -->
+    <button id="show" class="btn btn-small">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+        <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
+      </svg>
+    </button>
+  </h1>
+
+  <!-- Container for the flash cards, populated via script -->
+  <div id="cards-container" class="cards">
+    <!-- Only active card should be shown to user -->
+    <div class="card active">
+      <div class="inner-card">
+        <div class="inner-card-front">
+          <p>Question?</p>
+        </div>
+        <div class="inner-card-back">
+          <p>Answer</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="inner-card">
+      <div class="inner-card-front">
+        <p>Interpolate</p>
+      </div>
+      <div class="inner-card-back">
+        <p> 1. Insert (something of a different nature) into something else.
+          <br>
+          2. (Mathematics) insert (an intermediate value or term) into a 
+          series by estimating or calculating it from surrounding known values.
+        </p>
+      </div>
+    </div>
+
+  </div>
+  <!-- End of cards container -->
+
+  <div class="navigation">
+    <button id="prev" class="nav-button">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+        <path fill-rule="evenodd" d="M17 10a.75.75 0 01-.75.75H5.612l4.158 3.96a.75.75 0 11-1.04 1.08l-5.5-5.25a.75.75 0 010-1.08l5.5-5.25a.75.75 0 111.04 1.08L5.612 9.25H16.25A.75.75 0 0117 10z" clip-rule="evenodd" />
+      </svg>
+    </button>
+
+    <!-- Current page of current card -->
+    <p id="current"></p>
+
+    <button id="next" class="nav-button">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+        <path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd" />
+      </svg>
+    </button>
+  </div>
+  <!-- End of navigation (next and prev) -->
+
+  <!-- Overlay that adds new card -->
+  <div id="add-container" class="add-container">
+    <h1>Add New Card
+      <button id="hide" class="btn btn-small btn-ghost">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+          <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
+        </svg>
+      </button>
+    </h1>
+
+    <div class="form-group">
+      <label for="question">Question</label>
+      <textarea id="question" placeholder="Enter question..."></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="answer">Answer</label>
+      <textarea id="answer" placeholder="Enter answer..."></textarea>
+    </div>
+
+    <button id="add-card" class="btn">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+        <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
+      </svg>
+      <!-- Have "Add Card" text as child element and target for indepedent styling-->
+      <span id="add-card-text">Add Card</span>
+    </button>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
