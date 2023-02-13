@@ -75,3 +75,8 @@ To see the data being saved in ***Local Storage***
 
 ---
 
+# Attribution
+
+This app uses [heroicons](https://heroicons.com/) from the makers of Tailwind CSS! 
+
+Check them out at [GitHub](https://github.com/tailwindlabs/heroicons)
