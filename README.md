@@ -92,4 +92,4 @@ Solution:
 1. To style the text within a button: wrapped the text in a `span` so I can target the child element independently for styling
 2. To move up character displayed inline: added this to styling `position: relative` and `top: -0.3em`
 which moved up the text vertically so it can be centered with the `svg`
-
+3. Applied these style rules to another button on the `h1` and used CSS selectors to target both elements

@@ -1,11 +1,41 @@
+/* Lato Font */
+@import url('https://fonts.googleapis.com/css?family=Lato:300,500,700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #E3FDFD;
+  font-family: 'Lato', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  /* No Scrollbars */
+  overflow: hidden;
+}
+
+h1 {
+  position: relative;
+}
+
+h1 button {
+  position: absolute;
+  right: 0;
+  transform: translate(120%,-50%);
+  /* Always at the top */
+  z-index: 2;
+}
+
+
+
 button svg {
   /* w-6 h-6 is 1.5rem (24px) in Tailwind CSS */
   width: 24px;
   height: 24px;
-}
-
-#add-card {
-
 }
 
 #add-card svg {
@@ -13,10 +43,15 @@ button svg {
   height: 20px; 
 }
 
+.btn-small svg{
+  width: 20px;
+  height: 20px; 
+}
+
 /* WOW! This here centered the text vertically within the button containing an
 svg (plus sign). Had to target the text by wrapping it in a span to style as a
 child element. Then used -0.3em rather than px to accomodate font-size changes */
-#add-card-text {
+.btn > span {
   position: relative;
   top: -0.3em;
 }
