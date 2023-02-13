@@ -80,3 +80,16 @@ To see the data being saved in ***Local Storage***
 This app uses [heroicons](https://heroicons.com/) from the makers of Tailwind CSS! 
 
 Check them out at [GitHub](https://github.com/tailwindlabs/heroicons)
+
+# Notes while making this
+
+Issues I came across:
+
+- [x] An `svg` and text inside a button, but the text was not vertically centered. 
+ 
+Solution:
+
+1. To style the text within a button: wrapped the text in a `span` so I can target the child element independently for styling
+2. To move up character displayed inline: added this to styling `position: relative` and `top: -0.3em`
+which moved up the text vertically so it can be centered with the `svg`
+

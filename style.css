@@ -1,0 +1,22 @@
+button svg {
+  /* w-6 h-6 is 1.5rem (24px) in Tailwind CSS */
+  width: 24px;
+  height: 24px;
+}
+
+#add-card {
+
+}
+
+#add-card svg {
+  width: 20px;
+  height: 20px; 
+}
+
+/* WOW! This here centered the text vertically within the button containing an
+svg (plus sign). Had to target the text by wrapping it in a span to style as a
+child element. Then used -0.3em rather than px to accomodate font-size changes */
+#add-card-text {
+  position: relative;
+  top: -0.3em;
+}
