@@ -32,10 +32,26 @@ h1 button {
 
 .btn {
   background-color: white;
-  border: 1px solid 
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  font-size: 14px;
+  margin-top: 20px;
+  padding: 10px 15px;
 }
 
+/* Applies to the "x" button to escape out the Overlay: Add New Card */
+.btn-ghost {
+  border: 0;
+  background-color: transparent;
+}
 
+/* Keep the clear button bottom left */
+.clear {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+}
+ 
 button svg {
   /* w-6 h-6 is 1.5rem (24px) in Tailwind CSS */
   width: 24px;
@@ -46,6 +62,11 @@ button svg {
   width: 20px;
   height: 20px; 
 } */
+
+.btn-small {
+  /* font-size: 12px; */
+  padding: 5px 10px;
+}
 
 .btn-small svg{
   width: 20px;
@@ -60,7 +81,7 @@ child element. Then used -0.3em rather than px to accomodate font-size changes *
   top: -0.3em;
 }
 
-/* Fancy Add New Card Button with a transition for alternative text*/
+/* Fancy Add New Card Button with a transition for alternative text */
 .btn-add-new {
   /* position: relative; */
   overflow: hidden;
@@ -123,3 +144,4 @@ child element. Then used -0.3em rather than px to accomodate font-size changes *
   opacity: 1;
   transition: all 900ms cubic-bezier(0.48, 0, 0.12, 1);
 }
+
