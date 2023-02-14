@@ -113,3 +113,15 @@ transform-style: preserve-3d
 which solves the issue of the text of the question being inverted (`inner-card-front`).
 
 - Learned about the `transform-style: preserve-3d` property, so that children are in their own space. 
+
+- [x] Experimenting with buttons, rather than designing.
+
+The buttons had a problem of design. 
+
+## *How can you design if you don't know what the consequences of your decisions are?*
+
+***Creating something without any outcome in mind is not design but experimentation.***
+
+I tried designing the buttons in a way that is non-obtrusive and inconspicuous to the user so as to not bring them out of focus when studying. But as such it was mostly jamming in random inputs (colors, css properties or pseudo classes) and verifying if it achieved this. 
+
+But in the process of experimentation I learned various things. Such as inverting colors during `button:hover` and `button:focus`. How to match colors with color wheel, analogous, complementary & palettes. 
