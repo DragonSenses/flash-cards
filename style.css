@@ -163,6 +163,9 @@ child element. Then used -0.3em rather than px to accomodate font-size changes *
   left: 0;
   height: 100%;
   width: 100%;
+  /* Flash Card animation that flips the card */
+  transform: translateX(50%) rotateY(-10deg);
+  transition: 0.4s ease, opacity 0.4s ease;
 }
 
 /* Active card always on top with z-index */
@@ -170,8 +173,14 @@ child element. Then used -0.3em rather than px to accomodate font-size changes *
   opacity: 1;
   cursor: pointer;
   z-index: 10;
+  /* When card is active it returns to normal position after animation */
+  transform: translateX(0) rotateY(0deg);
 }
 
+/* Left class is on same element as card class */
+.card.left {
+  transform: translateX(-50%) rotateY(10deg);
+}
 
 .inner-card {
   box-shadow: 0 1px 10px rgba(0,0,0,0.3);
@@ -181,6 +190,17 @@ child element. Then used -0.3em rather than px to accomodate font-size changes *
   /* Relative because inner-card-front are inner-card-back positioned 
   absolute within it */
   position: relative;
+  /* Parent of inner-card-front/back needs to have this property where children
+  of this element should be positioned in the 3D space. This is necessary to 
+  show the back-facing div upon flipping the card. */
+  transform-style: preserve-3d;
+  /* When show-answer class is added to the card, the flip animation will start */
+  transition: transform 0.4s ease;
+}
+
+/* During rotation, class of show-answer rotates it on the x-axis */
+.card.show-answer .inner-card {
+  transform: rotateX(180deg);
 }
 
 .inner-card-front, 
@@ -199,4 +219,16 @@ child element. Then used -0.3em rather than px to accomodate font-size changes *
   background: white;
   /* Only see answer because it is the 2nd one. Answer's background
   covers the question */
+  /* Hide backface of a card when it is faced towards us */
+  backface-visibility: hidden;
+}
+
+
+.inner-card-front {
+  transform: rotateX(0deg);
+  z-index: 2;
+}
+
+.inner-card-back {
+  transform: rotateX(180deg);
 }

@@ -93,3 +93,23 @@ Solution:
 2. To move up character displayed inline: added this to styling `position: relative` and `top: -0.3em`
 which moved up the text vertically so it can be centered with the `svg`
 3. Applied these style rules to another button on the `h1` and used CSS selectors to target both elements
+
+- [x] When creating the CSS animations for the flash cards, during the transform the text would be inverted
+
+Solution: In order to show the back-facing div (in this case `inner-card-back`) after the transforms and transitions, had to add these two css properties.
+
+1. To the child divs of the inner card `inner-card-front, inner-card-back` add 
+
+```css
+backface-visibility: hidden;
+```
+
+2. To the parent div `inner-card` add 
+
+```css
+transform-style: preserve-3d
+```
+
+which solves the issue of the text of the question being inverted (`inner-card-front`).
+
+- Learned about the `transform-style: preserve-3d` property, so that children are in their own space. 
