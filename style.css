@@ -30,6 +30,10 @@ h1 button {
   z-index: 2;
 }
 
+.btn {
+  background-color: white;
+  border: 1px solid 
+}
 
 
 button svg {
@@ -38,10 +42,10 @@ button svg {
   height: 24px;
 }
 
-#add-card svg {
+/* #add-card svg {
   width: 20px;
   height: 20px; 
-}
+} */
 
 .btn-small svg{
   width: 20px;
@@ -54,4 +58,68 @@ child element. Then used -0.3em rather than px to accomodate font-size changes *
 .btn > span {
   position: relative;
   top: -0.3em;
+}
+
+/* Fancy Add New Card Button with a transition for alternative text*/
+.btn-add-new {
+  /* position: relative; */
+  overflow: hidden;
+  border: 1px solid #18181a;
+  color: #18181a;
+  display: inline-block;
+  font-size: 15px;
+  line-height: 15px;
+  padding: 7px;
+  text-decoration: none;
+  cursor: pointer;
+  background: #fff;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.btn-add-new span:first-child {
+  position: relative;
+  transition: color 600ms cubic-bezier(0.48, 0, 0.12, 1);
+  z-index: 10;
+}
+
+.btn-add-new span:last-child {
+  color: white;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  transition: all 500ms cubic-bezier(0.48, 0, 0.12, 1);
+  z-index: 100;
+  opacity: 0;
+  top: 50%;
+  left: 50%;
+  transform: translateY(225%) translateX(-50%);
+  height: 14px;
+  line-height: 13px;
+}
+
+.btn-add-new:after {
+  content: "";
+  position: absolute;
+  bottom: -50%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  transform-origin: bottom center;
+  transition: transform 600ms cubic-bezier(0.48, 0, 0.12, 1);
+  transform: skewY(9.3deg) scaleY(0);
+  z-index: 50;
+}
+
+.btn-add-new:hover:after {
+  transform-origin: bottom center;
+  transform: skewY(9.3deg) scaleY(2);
+}
+
+.btn-add-new:hover span:last-child {
+  transform: translateX(-50%) translateY(-100%);
+  opacity: 1;
+  transition: all 900ms cubic-bezier(0.48, 0, 0.12, 1);
 }
