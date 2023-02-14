@@ -1,6 +1,11 @@
 /* Lato Font */
 @import url('https://fonts.googleapis.com/css?family=Lato:300,500,700&display=swap');
 
+:root{
+  --closeRed: red;
+  --closeOrange: #ff8000;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -49,7 +54,9 @@ h1 button {
 .btn-ghost {
   border: 0;
   background-color: transparent;
-
+  height: 40px;
+  width: 45px;
+  /* box-shadow: rgba(0, 0, 0, 0.15) 0 4px 7px; */
 }
 
 .btn-ghost:hover {
@@ -61,6 +68,64 @@ h1 button {
 .btn-ghost:active {
   box-shadow: none;
 } 
+
+.close-container{
+  position: absolute;
+  cursor: pointer;
+}
+
+.leftright{
+  height: 2px;
+  width: 25px;
+  position: absolute;
+  background-color: var(--closeOrange);
+  border-radius: 2px;
+  transform: rotate(45deg);
+  transition: all .3s ease-in;
+}
+
+.rightleft{
+  height: 2px;
+  width: 25px;
+  position: absolute;
+  /* margin-top: 24px; */
+  background-color: var(--closeOrange);
+  border-radius: 2px;
+  transform: rotate(-45deg);
+  transition: all .3s ease-in;
+}
+
+label{
+  color: black;
+  font-family: Helvetica, Arial, sans-serif; 
+  font-size: .7em;
+  font-weight: bolder;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all .3s ease-in;
+  opacity: 0;
+}
+
+/* Have label right above the close container */
+.close{
+  margin: -40px 0px 0px -20px;
+  position: absolute;
+}
+
+.close-container:hover .leftright{
+  transform: rotate(-45deg);
+  background-color: var(--closeRed);
+}
+.close-container:hover .rightleft{
+  transform: rotate(45deg);
+  background-color: var(--closeRed);
+}
+
+.close-container:hover label{
+  opacity: 1;
+}
+/* End of close button */
+
 
 /* Keep the clear button bottom left */
 .clear {
@@ -386,7 +451,7 @@ Will have an icon of sorts to let the user know to flip. */
 
 .form-group label {
   display: block;
-  margin: 20px 0 10px;
+  margin: 15px 0 10px;
   text-align: center;
   visibility: hidden;
 }
