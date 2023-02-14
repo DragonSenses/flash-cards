@@ -232,3 +232,17 @@ child element. Then used -0.3em rather than px to accomodate font-size changes *
 .inner-card-back {
   transform: rotateX(180deg);
 }
+
+/* Pseudo-selector of after, since we will insert content after both of these flip 
+Will have an icon of sorts to let the user know to flip. */
+.inner-card-front::after, 
+.inner-card-back::after {
+  /* Anitclockwise Gapped Circle Arrow - U+27F2, &#10226; \27F2 */
+  content: '⟲'; 
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  color: #D0C9C0;
+}
