@@ -49,7 +49,18 @@ h1 button {
 .btn-ghost {
   border: 0;
   background-color: transparent;
+
 }
+
+.btn-ghost:hover {
+  color: #FF2E63;
+  background-color: #A6E3E9;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+}
+
+.btn-ghost:active {
+  box-shadow: none;
+} 
 
 /* Keep the clear button bottom left */
 .clear {
@@ -211,7 +222,7 @@ child element. Then used -0.3em rather than px to accomodate font-size changes *
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  width: 100%;
+  /* width: 100%; */
   will-change: transform;
 }
 
@@ -304,7 +315,6 @@ child element. Then used -0.3em rather than px to accomodate font-size changes *
   backface-visibility: hidden;
 }
 
-
 .inner-card-front {
   transform: rotateX(0deg);
   z-index: 2;
@@ -326,4 +336,68 @@ Will have an icon of sorts to let the user know to flip. */
   font-weight: bold;
   font-size: 16px;
   color: #D0C9C0;
+}
+
+.navigation {
+  display: flex;
+  margin: 20px 0;
+}
+
+.navigation .nav-button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* page of card */
+.navigation p {
+  margin: 0 25px;
+}
+
+.add-container {
+  /* Sets the add new card overlay as invisible and go behind the cards*/
+  opacity: 0;
+  z-index: -1;
+  background-color: #CBF1F5;
+  border-top: 2px solid #eee;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+  /* Makes the overlay like a new page */
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  transition: 0.3s ease;
+}
+
+/* show class shows the add card overlay */
+.add-container.show {
+  opacity: 1;
+  z-index: 2;
+}
+
+.add-container h3 {
+  margin: 10px 0;
+}
+
+.form-group label {
+  display: block;
+  margin: 20px 0 10px;
+  text-align: center;
+  visibility: hidden;
+}
+
+.form-group textarea {
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  font-size: 16 px;
+  padding: 12px;
+  min-width: 500px;
+  max-width: 100%;
+  height: 175px;
+  resize: none;
 }

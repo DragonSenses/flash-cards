@@ -30,6 +30,7 @@
 
   <!-- Container for the flash cards, populated via script -->
   <div id="cards-container" class="cards">
+
     <!-- Only active card should be shown to user -->
     <div class="card active show-answer">
       <div class="inner-card">
@@ -80,8 +81,9 @@
   <!-- End of navigation (next and prev) -->
 
   <!-- Overlay that adds new card -->
-  <div id="add-container" class="add-container">
-    <h1>Add New Card
+  <div id="add-container" class="add-container show">
+    <h1>
+      <span class="text">Add New Card</span>
       <button id="hide" class="btn btn-small btn-ghost">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
           <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
