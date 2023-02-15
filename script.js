@@ -185,3 +185,15 @@ addCardBtn.addEventListener('click', () => {
     setCardData(cardsData);
   }
 });
+
+// Clear Cards 
+clearBtn.addEventListener('click', () => {
+  // Remove the set of cards data in localStorage
+  localStorage.removeItem(key);
+
+  // Clear the cards in the DOM 
+  cardsContainer.innerHTML = '';
+
+  // Reload the page
+  window.location.reload();
+});
