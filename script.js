@@ -14,7 +14,7 @@ const addContainer = document.getElementById('add-container');
 let currentActiveCard = 0;
 
 // Store DOM Elements that represent cards
-const cardsDOM = [];
+const cards = [];
 
 // Store actual card data
 const cardsData = [
@@ -30,7 +30,7 @@ const cardsData = [
   },
   {
     question: 'Chocolate or Vanilla?',
-    answer: 'Chocolate'
+    answer: '❤️'
   }
 ];
 
@@ -39,7 +39,7 @@ const cardsData = [
  */
 function updateCurrentText(){
   // Update the current card element's innerText with number of cards
-  current.innerText = `${currentActiveCard + 1}/${cardsDOM.length}`;
+  current.innerText = `${currentActiveCard + 1}/${cards.length}`;
 }
 
 /**
@@ -73,7 +73,7 @@ function createCard(data, index) {
   card.addEventListener('click', () => card.classList.toggle('show-answer'));
 
   // Add to DOM cards array
-  cardsDOM.push(card);
+  cards.push(card);
 
   // Add the card to the actual DOM in cardsContainer
   cardsContainer.appendChild(card);
@@ -95,18 +95,18 @@ createCards();
 nextBtn.addEventListener('click', () => {
   // Hide the card to the left (in CSS: 'card left' class)
   // className sets (overrides) the class, classList just appends the class
-  cardsDOM[currentActiveCard].className = 'card left';
+  cards[currentActiveCard].className = 'card left';
 
-  // Increment the currentActive card
-  currentActiveCard += 1;
+  console.log(`current: ${currentActiveCard}`);
 
-  // Once the index of currentActiveCard is greater than last element, set it's index to it
-  if(currentActiveCard > cardsDOM.length - 1){
-    currentActiveCard = cardsDOM.length - 1;
-  }
+  // Increment the active index, use array circularly
+  currentActiveCard = (currentActiveCard + 1) % cards.length;
+
+  console.log(`current now: ${currentActiveCard}`);
+
 
   // Make it the new active card
-  cardsDOM[currentActiveCard].className = 'card active';
+  cards[currentActiveCard].className = 'card active';
 
   // Also update currentText
   updateCurrentText();
@@ -114,18 +114,17 @@ nextBtn.addEventListener('click', () => {
 
 prevBtn.addEventListener('click', () => {
   // className sets (overrides) the class, classList just appends the class
-  cardsDOM[currentActiveCard].className = 'card right';
+  cards[currentActiveCard].className = 'card right';
 
-  // Increment the currentActive card
-  currentActiveCard -= 1;
+  console.log(`current: ${currentActiveCard}`);
 
-  // Once the index of currentActiveCard is less than first, set it to first
-  if(currentActiveCard < 0) {
-    currentActiveCard = 0;
-  }
+  // Decrement the currentActive card, use array circularly
+  currentActiveCard = (currentActiveCard - 1 + cards.length) % cards.length;
+
+  console.log(`current now: ${currentActiveCard}`);
 
   // Make it the new active card
-  cardsDOM[currentActiveCard].className = 'card active';
+  cards[currentActiveCard].className = 'card active';
 
   // Also update currentText
   updateCurrentText();

@@ -85,6 +85,19 @@ Check them out at [GitHub](https://github.com/tailwindlabs/heroicons)
 
 Issues I came across:
 
+- [x] Operator precedence of `%` remainder operator in JavaScript is higher than `+` addition. So when dealing with an array circularly, would get an undefined error (because it would go out of bounds). I've done this quite a few times so this was a good refresher: 
+
+```js
+// DO this!
+index = (index + 1) % arr.length;
+
+// Not this!
+index = index + 1 % arr.length;
+
+// And to go backwards do this (to prevent negative values):
+i = (i - 1 + length) % length;
+```
+
 - [x] An `svg` and text inside a button, but the text was not vertically centered. 
  
 Solution:
