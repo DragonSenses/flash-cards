@@ -10,7 +10,7 @@ const addCardBtn = document.getElementById('add-card');
 const clearBtn = document.getElementById('clear');
 const addContainer = document.getElementById('add-container');
 
-// Keep track of current card
+// Keep track of current card's index
 let currentActiveCard = 0;
 
 // Store DOM Elements that represent cards
@@ -90,18 +90,43 @@ function createCards() {
 
 createCards();
 
-/* <div class="card active show-answer">
-      <div class="inner-card">
-        <div class="inner-card-front">
-          <p>Interpolate</p>
-        </div>
-        <div class="inner-card-back">
-          <p> 1. Insert (something of a different nature) into something else.
-            <br>
-            2. (Mathematics) insert (an intermediate value or term) into a 
-            series by estimating or calculating it from surrounding known values.
-          </p>
-        </div>
-      </div>
-    </div> 
-*/
+/* Event Listeners */
+
+nextBtn.addEventListener('click', () => {
+  // Hide the card to the left (in CSS: 'card left' class)
+  // className sets (overrides) the class, classList just appends the class
+  cardsDOM[currentActiveCard].className = 'card left';
+
+  // Increment the currentActive card
+  currentActiveCard += 1;
+
+  // Once the index of currentActiveCard is greater than last element, set it's index to it
+  if(currentActiveCard > cardsDOM.length - 1){
+    currentActiveCard = cardsDOM.length - 1;
+  }
+
+  // Make it the new active card
+  cardsDOM[currentActiveCard].className = 'card active';
+
+  // Also update currentText
+  updateCurrentText();
+});
+
+prevBtn.addEventListener('click', () => {
+  // className sets (overrides) the class, classList just appends the class
+  cardsDOM[currentActiveCard].className = 'card right';
+
+  // Increment the currentActive card
+  currentActiveCard -= 1;
+
+  // Once the index of currentActiveCard is less than first, set it to first
+  if(currentActiveCard < 0) {
+    currentActiveCard = 0;
+  }
+
+  // Make it the new active card
+  cardsDOM[currentActiveCard].className = 'card active';
+
+  // Also update currentText
+  updateCurrentText();
+});
