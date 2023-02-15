@@ -27,14 +27,15 @@ HTML5, CSS3, JavaScript
 - [x] View previous and subsequent cards
 - [x] Previous and subsequent cards wrap around (next on last item goes to the first item and vice versa)
 - [x] Create "Add new card" overlay with form
-- [ ] Add new cards to local storage
-- [ ] Clear all cards from local storage
+- [x] Add new cards to local storage
+- [x] Clear all cards from local storage
 
 ### Extra features to add later
 
 - [ ] Update and change content of a flash card after it has been made
 - [ ] User can save set of flash cards before clearing
 - [ ] User can load set of flash cards later
+- Maybe save sets of flash cards with different keys in localStorage? 
 
 # How to use
 
