@@ -4,11 +4,14 @@ const nextBtn = document.getElementById('next');
 const current = document.getElementById('current');
 const showBtn = document.getElementById('show');
 const hideBtn = document.getElementById('hide');
-const question = document.getElementById('question');
-const answer = document.getElementById('answer');
+const questionInput = document.getElementById('question');
+const answerInput = document.getElementById('answer');
 const addCardBtn = document.getElementById('add-card');
 const clearBtn = document.getElementById('clear');
 const addContainer = document.getElementById('add-container');
+
+// The key to use to store the data of the app in localStorage
+const key = 'cards';
 
 // Keep track of current card's index
 let currentActiveCard = 0;
@@ -17,7 +20,10 @@ let currentActiveCard = 0;
 const cards = [];
 
 // Store actual card data
-const cardsData = [
+const cardsData = getCardsData();
+
+/* Hardcoded seed data
+[
   {
     question: 'Interpolate',
     answer: `1. Insert (something of a different nature) into something else.
@@ -34,6 +40,36 @@ const cardsData = [
   }
 ];
 
+ */
+
+/**
+ * Reaches into local storage and get cards data to load into the DOM. 
+ */
+function getCardsData(){
+  // localStorage only stores strings so must be parsed to extact data
+  const cards = JSON.parse(localStorage.getItem(key));
+  return (cards === null) ? [] : cards;
+}
+
+/**
+ * Adds the card to local 
+ */
+
+/**
+ * Adds the card to localStorage. Since only one <key, value> pair stores the 
+ * cards data, we update the entire value (entire cards array) with the new 
+ * card.
+ * @param {*} cards the array of cards
+ */
+function setCardData(cards){
+  // An array will be stringified before storing it in localStorage
+  localStorage.setItem(key, JSON.stringify(cards));
+
+  // Now need to reflect the new data in the DOM
+  // Hack | Reload the page so new data reflects in the DOM
+  window.location.reload();
+}
+  
 /**
  * Shows the current number of cards
  */
@@ -91,6 +127,8 @@ function createCards() {
 createCards();
 
 /* Event Listeners */
+
+// Next Button
 nextBtn.addEventListener('click', () => {
   // Hide the card to the left (in CSS: 'card left' class)
   // className sets (overrides) the class, classList just appends the class
@@ -105,6 +143,7 @@ nextBtn.addEventListener('click', () => {
   updateCurrentText();
 });
 
+// Previous Button
 prevBtn.addEventListener('click', () => {
   cards[currentActiveCard].className = 'card right';
 
@@ -113,4 +152,36 @@ prevBtn.addEventListener('click', () => {
   cards[currentActiveCard].className = 'card active';
 
   updateCurrentText();
+});
+
+// Show Add Container
+showBtn.addEventListener('click',
+  () => addContainer.classList.add('show'));
+
+// Close (Hide) Add Container
+hideBtn.addEventListener('click', 
+  () => addContainer.classList.remove('show'));
+
+// Add New Card
+addCardBtn.addEventListener('click', () => {
+  const question = questionInput.value;
+  const answer = answerInput.value;
+
+  if(question.trim() && answer.trim()){
+    // Create a new card object with question and answer inputs
+    const newCard = { question, answer };
+
+    createCard(newCard);
+
+    // Clear inputs
+    questionInput.value = '';
+    answerInput.value = '';
+
+    // Hide the add container overlay after successful card creation
+    addContainer.classList.remove('show');
+
+    // Store data in localStorage
+    cardsData.push(newCard);
+    setCardData(cardsData);
+  }
 });
