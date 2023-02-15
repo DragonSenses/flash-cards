@@ -40,7 +40,7 @@ const cardsData = getCardsData();
   }
 ];
 
- */
+*/
 
 /**
  * Reaches into local storage and get cards data to load into the DOM. 
@@ -130,6 +130,10 @@ createCards();
 
 // Next Button
 nextBtn.addEventListener('click', () => {
+  if(cards.length == 0) {
+    return;
+  }
+
   // Hide the card to the left (in CSS: 'card left' class)
   // className sets (overrides) the class, classList just appends the class
   cards[currentActiveCard].className = 'card left';
@@ -145,6 +149,10 @@ nextBtn.addEventListener('click', () => {
 
 // Previous Button
 prevBtn.addEventListener('click', () => {
+  if(cards.length == 0) {
+    return;
+  }
+
   cards[currentActiveCard].className = 'card right';
 
   currentActiveCard = (currentActiveCard - 1 + cards.length) % cards.length;
