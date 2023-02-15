@@ -91,41 +91,26 @@ function createCards() {
 createCards();
 
 /* Event Listeners */
-
 nextBtn.addEventListener('click', () => {
   // Hide the card to the left (in CSS: 'card left' class)
   // className sets (overrides) the class, classList just appends the class
   cards[currentActiveCard].className = 'card left';
 
-  console.log(`current: ${currentActiveCard}`);
-
   // Increment the active index, use array circularly
   currentActiveCard = (currentActiveCard + 1) % cards.length;
-
-  console.log(`current now: ${currentActiveCard}`);
-
 
   // Make it the new active card
   cards[currentActiveCard].className = 'card active';
 
-  // Also update currentText
   updateCurrentText();
 });
 
 prevBtn.addEventListener('click', () => {
-  // className sets (overrides) the class, classList just appends the class
   cards[currentActiveCard].className = 'card right';
 
-  console.log(`current: ${currentActiveCard}`);
-
-  // Decrement the currentActive card, use array circularly
   currentActiveCard = (currentActiveCard - 1 + cards.length) % cards.length;
 
-  console.log(`current now: ${currentActiveCard}`);
-
-  // Make it the new active card
   cards[currentActiveCard].className = 'card active';
 
-  // Also update currentText
   updateCurrentText();
 });

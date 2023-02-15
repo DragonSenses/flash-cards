@@ -22,10 +22,11 @@ HTML5, CSS3, JavaScript
 
 ## Specifications
 
-- [ ] Create flip cards with CSS animations
-- [ ] Display question cards and flip for answer
-- [ ] View previous and subsequent cards
-- [ ] Create "Add new card" overlay with form
+- [x] Create flip cards with CSS animations
+- [x] Display question cards and flip for answer
+- [x] View previous and subsequent cards
+- [x] Previous and subsequent cards wrap around (next on last item goes to the first item and vice versa)
+- [x] Create "Add new card" overlay with form
 - [ ] Add new cards to local storage
 - [ ] Clear all cards from local storage
 
