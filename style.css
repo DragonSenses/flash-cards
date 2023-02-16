@@ -41,6 +41,15 @@ h1 button {
   z-index: 2;
 }
 
+p {
+  /* Disable highlighting */
+  user-select: none;
+  /* pointer-events: none; */
+
+  /* space around the text of the flash card */
+  margin: auto 10px auto 17px;
+}
+
 .btn {
   background-color: white;
   border: 1px solid #aaa;

@@ -30,8 +30,11 @@ HTML5, CSS3, JavaScript
 - [x] Add new cards to local storage
 - [x] Clear all cards from local storage
 
-### Extra features to add later
+## Extra Features
+- [x] Prevent user from selecting the text on flash card
 
+### Extra features to add later
+- [ ] Allow User to have newlines in the content of the flash card
 - [ ] Update and change content of a flash card after it has been made
 - [ ] User can save set of flash cards before clearing
 - [ ] User can load set of flash cards later
@@ -74,6 +77,20 @@ To see the data being saved in ***Local Storage***
 *Note*: If you do not want data to be saved on your browser, try opening the app in "incognito" or "private browsing" so data will be cleared when the last "private" tab is closed
 
 * To assuage any privacy concerns, data is not saved in any other place other than your own personal machine's web browser
+
+---
+
+# Browser dependent issues
+
+**Microsoft Edge** 
+
+- Prevent user from opening up context menu upon selecting text (in Microsft Edge)
+
+When clicking the flash cards quickly, the user may "highlight" the text and open up a context menu that is specific to Edge browser. This context menu is separate from the right click menu, so there is no way to target this on the application's end. You can disable the feature by doing the following: 
+
+1. Navigate to [edge://settings/appearance](edge://settings/appearance) in **Edge**
+2. Scroll down the page to the `Context menus` section.
+3. Disable the option `Show mini menu when selecting text`, or more specifically disable this feature on the specific site the app is opened in (most likely the user's directory where `index.html` is located), where it is bookmarked.
 
 ---
 
